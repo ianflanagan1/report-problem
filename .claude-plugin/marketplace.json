@@ -1,0 +1,14 @@
+{
+  "name": "report-problem",
+  "description": "Report a problem with one of our apps as a Jira issue a developer can work from.",
+  "owner": {
+    "name": "Ian Flanagan"
+  },
+  "plugins": [
+    {
+      "name": "report-problem",
+      "source": "./",
+      "description": "Report a problem with one of our apps as a Jira issue a developer can work from."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "report-problem",
+  "description": "Report a problem with one of our apps as a Jira issue a developer, or an AI agent after review, can work from: Claude asks what you saw, in the words of the app's screens when its product map is installed, and files it.",
+  "version": "0.1.1",
+  "author": {
+    "name": "Ian Flanagan"
+  },
+  "homepage": "https://github.com/ianflanagan1/claude-report-problem",
+  "repository": "https://github.com/ianflanagan1/claude-report-problem",
+  "license": "MIT"
+}
