@@ -8,8 +8,8 @@
 #
 # The maps are in product-maps/ in the user's Claude folder, ~/.claude unless CLAUDE_CONFIG_DIR
 # says otherwise (on Windows, %USERPROFILE%\.claude, which Git Bash calls ~/.claude too): outside
-# the plugin, so they're installed and updated apart from it, and a plugin update never removes
-# them. `product-map publish` writes them there.
+# the skill, so they're installed and updated apart from it, and updating the skill never
+# removes them. `product-map publish` writes them there.
 
 maps=${CLAUDE_CONFIG_DIR:-$HOME/.claude}/product-maps
 

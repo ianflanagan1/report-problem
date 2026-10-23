@@ -4,13 +4,13 @@
 # tests/run.sh.
 
 root=$(cd "$(dirname "$0")/.." && pwd)
-skill=$root/skills/report-problem/SKILL.md
+skill=$root/skills/ianf-report-problem/SKILL.md
 
 setUp() {
     sandbox=$(mktemp -d "${SHUNIT_TMPDIR:-${TMPDIR:-/tmp}}/test.XXXXXX")
-    mkdir -p "$sandbox/plugin/skills/report-problem/scripts"
-    cp "$root/skills/report-problem/scripts/maps.sh" "$sandbox/plugin/skills/report-problem/scripts/"
-    maps_sh=$sandbox/plugin/skills/report-problem/scripts/maps.sh
+    mkdir -p "$sandbox/repo/skills/ianf-report-problem/scripts"
+    cp "$root/skills/ianf-report-problem/scripts/maps.sh" "$sandbox/repo/skills/ianf-report-problem/scripts/"
+    maps_sh=$sandbox/repo/skills/ianf-report-problem/scripts/maps.sh
     HOME=$sandbox/home
     unset CLAUDE_CONFIG_DIR
     maps=$HOME/.claude/product-maps
@@ -44,11 +44,11 @@ RULES
 }
 
 # loading_commands: what the skill runs as it loads, one per line, with CLAUDE_SKILL_DIR filled in
-# as a plugin installed outside the working directory would have it.
+# as a skill linked in from a repository outside the working directory would have it.
 loading_commands() {
     # shellcheck disable=SC2016
     sed -n 's/^!`\(.*\)`$/\1/p' "$skill" |
-        sed -e 's,${CLAUDE_SKILL_DIR},/home/u/.claude/plugins/cache/report-problem/skills/report-problem,g'
+        sed -e 's,${CLAUDE_SKILL_DIR},/home/u/.claude/skills/ianf-report-problem,g'
 }
 
 test_colleagues_can_start_it_by_asking_to_report_a_problem() {
@@ -168,9 +168,9 @@ test_maps_follow_claude_config_dir_when_it_is_set() {
     assertContains "$output" "=== Product map: Shop, in $maps/shop ==="
 }
 
-test_maps_in_the_plugin_itself_are_ignored() {
-    mkdir -p "$sandbox/plugin/maps"
-    printf '# Shop\n' >"$sandbox/plugin/maps/shop.md"
+test_maps_in_the_skills_own_repository_are_ignored() {
+    mkdir -p "$sandbox/repo/maps"
+    printf '# Shop\n' >"$sandbox/repo/maps/shop.md"
     output=$(sh "$maps_sh")
     assertNotContains "$output" "Shop"
 }

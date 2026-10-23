@@ -1,21 +1,20 @@
 # report-problem
 
-A Claude Code plugin for colleagues to report a problem with one of our apps, or ask for a change, as a Jira issue a developer can work from without coming back to ask. Say what went wrong, or run `/report-problem`: Claude asks about what you saw and did, never about code, and files it at the `needs-codebase` stage, for a developer to refine.
+A Claude Code skill for people who use one of our apps to report a problem with it, or ask for a change, as a Jira issue a developer can work from without coming back to ask. Say what went wrong, or run `/ianf-report-problem`: Claude asks about what you saw and did, never about code, and files it at the `needs-codebase` stage, for a developer to refine.
 
 With an app's **product map** installed, Claude knows the app's pages, buttons and messages, and offers them as answers, in the words on its screens, such as the pages to choose from or the message it showed. It also knows what changes the app's behaviour, such as being logged in, so it asks about that. And the map says where the app's problems are filed. Without one, Claude asks the same things in your own words and writes the report for you to paste into Jira, since nothing else says where it goes.
 
 ## Install
 
-Once, in Claude Code:
+Clone to `~/projects/claude/report-problem`, then link the skill into your skills folder:
 
+```sh
+ln -s ~/projects/claude/report-problem/skills/ianf-report-problem ~/.claude/skills/ianf-report-problem
 ```
-/plugin marketplace add ianflanagan1/claude-report-problem
-/plugin install report-problem@report-problem
-```
 
-Then turn on auto-update for the marketplace in `/plugin`, under Marketplaces, so changes to the skill arrive by themselves. To install it for everyone, add the marketplace and the plugin to the team's managed settings (`extraKnownMarketplaces` and `enabledPlugins`) instead.
+The `ianf-` prefix keeps it from colliding with other skills of the same name. Pull the clone to pick up changes.
 
-Then install the maps of the apps you report on, below: the plugin has none.
+Then install the maps of the apps you report on, below: the skill has none.
 
 ## Filing
 
@@ -25,7 +24,7 @@ On Windows, file with a Jira connector: the `jira` command's sign-in reads its A
 
 ## Maps
 
-A map is private to the app it describes, so it isn't part of this plugin, which is public and has none. Each is a folder, `<app>/`, in the `product-maps` folder in Claude Code's own folder, read each time the skill runs: add, replace or remove one there and the next report uses it, with no change to the plugin. Claude reads a map's `index.md` as the skill starts, then only the areas of the app a report is about, as it would read a codebase, so a large app's map doesn't fill its context.
+A map is private to the app it describes, so it isn't part of this skill, which is public and has none. Each is a folder, `<app>/`, in the `product-maps` folder in Claude Code's own folder, read each time the skill runs: add, replace or remove one there and the next report uses it, with no change to the skill. Claude reads a map's `index.md` as the skill starts, then only the areas of the app a report is about, as it would read a codebase, so a large app's map doesn't fill its context.
 
 | System | Folder |
 |---|---|
@@ -37,7 +36,7 @@ With `CLAUDE_CONFIG_DIR` set, it's `product-maps` in that folder instead. The sk
 
 With one map installed, Claude takes the report to be about that app unless you say otherwise. With several, it works out which from what you say, and asks when it can't tell.
 
-Don't edit them: each app's CI builds its map with [product-map](https://github.com/ianflanagan1/product-map) into the app's repository, where it's reviewed with the code. `product-map publish ~/.claude/product-maps` in the app's repository installs it on your machine; to install it on a colleague's, give them the app's folder, `docs/product-map/map/` in its repository, to put in their own `product-maps` folder, above, named as `publish` names it.
+Don't edit them: each app's CI builds its map with [product-map](https://github.com/ianflanagan1/product-map) into the app's repository, where it's reviewed with the code. `product-map publish ~/.claude/product-maps` in the app's repository installs it on your machine; to install it on someone else's, give them the app's folder, `docs/product-map/map/` in its repository, to put in their own `product-maps` folder, above, named as `publish` names it.
 
 ## Development
 
