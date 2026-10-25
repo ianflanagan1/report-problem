@@ -18,7 +18,7 @@ Then install the maps of the apps you report on, below: the skill has none.
 
 ## Filing
 
-Issues go where the app's map says, in its front matter: the site and space of the `[tracker]` table in the app's `.workspace.toml`, the same place the team's own issues go. Claude files with the `jira` command from jira-tools, if it's installed, as `jira create --workspace <map>`; otherwise with a Jira connector, such as Atlassian's, if you have one; otherwise it gives you the issue to paste into Jira. Without a map for the app, it isn't filed: it gives you the issue to paste.
+Issues go where the app's map says, in its front matter: the site and space in the app's `.config/ianf-tracker.toml`, the same place the team's own issues go. Claude files with the `jira` command from jira-tools, if it's installed, as `jira create --tracker <map>`; otherwise with a Jira connector, such as Atlassian's, if you have one; otherwise it gives you the issue to paste into Jira. Without a map for the app, it isn't filed: it gives you the issue to paste.
 
 On Windows, file with a Jira connector: the `jira` command's sign-in reads its API token from the macOS keychain or Linux's Secret Service, and doesn't yet read Windows Credential Manager, so it stops saying credentials aren't supported there. Developers then refine it with jira-tools' `/jira-refine`, which compares it with the code and, once a developer approves it, makes it `ready-for-agent`.
 

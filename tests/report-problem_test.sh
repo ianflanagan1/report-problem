@@ -70,7 +70,7 @@ test_no_path_it_loads_climbs_with_dot_dot() {
 }
 
 test_filing_with_jira_is_allowed_and_nothing_else_is() {
-    assertTrue "allows '$(printf "jira create 'Orders page shows No results' --workspace '/home/u/.claude/product-maps/shop.md' --stage needs-codebase <<'EOF'\nx\nEOF")'"
+    assertTrue "allows '$(printf "jira create 'Orders page shows No results' --tracker '/home/u/.claude/product-maps/shop.md' --stage needs-codebase <<'EOF'\nx\nEOF")'"
     assertTrue "allows 'command -v jira'"
     assertTrue "allows 'jira attach PROJ-12 --session 1d7994f2-5552-4b0c-910c-56025078d493'"
     assertFalse "allows 'jira stage PROJ-1 ready-for-agent'"

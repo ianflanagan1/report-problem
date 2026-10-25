@@ -99,7 +99,7 @@ File it where the block's first lines say the app's problems go, at the `needs-c
 - If `command -v jira` finds the `jira` command, file it with that, giving it the app's map, whose settings say where it goes:
 
   ```sh
-  jira create '<summary>' --workspace '<map>/index.md' --stage needs-codebase <<'EOF'
+  jira create '<summary>' --tracker '<map>/index.md' --stage needs-codebase <<'EOF'
   <description>
   EOF
   ```
