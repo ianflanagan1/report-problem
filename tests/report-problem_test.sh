@@ -7,7 +7,7 @@ root=$(cd "$(dirname "$0")/.." && pwd)
 skill=$root/skills/ianf-report-problem/SKILL.md
 
 setUp() {
-    sandbox=$(mktemp -d "${SHUNIT_TMPDIR:-${TMPDIR:-/tmp}}/test.XXXXXX")
+    sandbox=$(mktemp --directory "${SHUNIT_TMPDIR:-${TMPDIR:-/tmp}}/test.XXXXXX")
     mkdir -p "$sandbox/repo/skills/ianf-report-problem/scripts"
     cp "$root/skills/ianf-report-problem/scripts/maps.sh" "$sandbox/repo/skills/ianf-report-problem/scripts/"
     maps_sh=$sandbox/repo/skills/ianf-report-problem/scripts/maps.sh
@@ -52,7 +52,7 @@ loading_commands() {
 }
 
 test_colleagues_can_start_it_by_asking_to_report_a_problem() {
-    assertFalse "disable-model-invocation is set" "grep -q '^disable-model-invocation: true' '$skill'"
+    assertFalse "disable-model-invocation is set" "grep --quiet '^disable-model-invocation: true' '$skill'"
 }
 
 test_every_command_it_runs_as_it_loads_is_allowed() {
@@ -66,7 +66,7 @@ COMMANDS
 }
 
 test_no_path_it_loads_climbs_with_dot_dot() {
-    assertFalse "a load-time path has .." "loading_commands | grep -q '\.\.'"
+    assertFalse "a load-time path has .." "loading_commands | grep --quiet '\.\.'"
 }
 
 test_filing_with_jira_is_allowed_and_nothing_else_is() {
