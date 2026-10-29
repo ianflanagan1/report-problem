@@ -55,6 +55,11 @@ test_colleagues_can_start_it_by_asking_to_report_a_problem() {
     assertFalse "disable-model-invocation is set" "grep --quiet '^disable-model-invocation: true' '$skill'"
 }
 
+test_it_runs_inline_on_the_session_model_since_it_interviews_the_colleague() {
+    assertTrue "model: inherit" "grep --quiet --line-regexp 'model: inherit' '$skill'"
+    assertFalse "context: fork" "grep --quiet '^context: fork' '$skill'"
+}
+
 test_every_command_it_runs_as_it_loads_is_allowed() {
     commands=$(loading_commands)
     assertNotNull "it loads the maps" "$commands"

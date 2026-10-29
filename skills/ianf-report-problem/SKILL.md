@@ -3,6 +3,7 @@ name: ianf-report-problem
 description: Report a problem with one of our apps, or ask for a change to one, as a Jira issue. Use when a colleague says something in an app is broken, wrong, confusing or missing. Asks what they saw, in the words of the app's screens when its product map is installed, and files an issue a developer can pick up.
 allowed-tools: Bash(sh *scripts/maps.sh*), Read(~/.claude/product-maps/**), Grep(~/.claude/product-maps/**), Glob(~/.claude/product-maps/**), Bash(command -v jira), Bash(echo "exit $?"), Bash(jira create:*), Bash(jira attach:*)
 disable-model-invocation: false
+model: inherit
 ---
 
 # Report a problem
