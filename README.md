@@ -41,6 +41,6 @@ Don't edit them: each app's CI builds its map with [product-map](https://github.
 ## Development
 
 ```sh
-devbox run test    # shunit2
-devbox run lint    # shellcheck
+devbox run -- task test    # shunit2
+devbox run -- task lint    # shellcheck
 ```

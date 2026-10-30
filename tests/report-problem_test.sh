@@ -1,7 +1,7 @@
 #!/bin/sh
 # The report-problem skill: what it may run without asking, and the maps it loads from the
 # user's Claude folder. Run with
-# tests/run.sh.
+# `devbox run -- task test`.
 
 root=$(cd "$(dirname "$0")/.." && pwd)
 skill=$root/skills/ianf-report-problem/SKILL.md
@@ -188,4 +188,4 @@ test_it_works_from_any_folder() {
 }
 
 # shellcheck disable=SC1090
-. "$SHUNIT2"
+. "${SHUNIT2:-$(command -v shunit2)}"
